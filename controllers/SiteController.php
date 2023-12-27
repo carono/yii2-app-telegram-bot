@@ -2,11 +2,6 @@
 
 namespace app\controllers;
 
-use app\models\forms\ForgetForm;
-use app\models\forms\LoginForm;
-use app\models\forms\RegisterForm;
-use app\models\forms\ResetForm;
-use app\models\User;
 use Yii;
 use yii\db\Expression;
 use yii\filters\AccessControl;

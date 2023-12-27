@@ -6,7 +6,7 @@ return [
         'showScriptName' => false,
         'rules' => [
             '/' => 'site/index',
-            'api/v1/<controller>/<action>' => 'v1/<controller>/<action>',
+            'callback' => 'callback/index',
             '<module>/<controller>/<action>' => '<module>/<controller>/<action>',
             '<controller>/<action>' => '<controller>/<action>',
             '<action>' => ''

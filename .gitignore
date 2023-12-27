@@ -33,6 +33,7 @@ tests/_support/_generated
 /.vagrant
 
 config/*-local.php
+config/db.php
 web/index.php
 web/index-test.php
 yii

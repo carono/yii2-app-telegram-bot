@@ -28,7 +28,6 @@ class DefaultAsset extends AssetBundle
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
-        BowerAsset::class,
         AppAsset::class
     ];
 }

@@ -2,7 +2,7 @@
 
 use yii\helpers\ArrayHelper;
 
-$params = ArrayHelper::merge(require __DIR__ . '/params.php', require __DIR__ . '/params-local.php');
+$params = ArrayHelper::merge(require __DIR__ . '/params.php', file_exists(__DIR__ . '/params-local.php') ? require __DIR__ . '/params-local.php' : []);
 $db = require __DIR__ . '/db.php';
 
 $config = [
@@ -38,6 +38,7 @@ $config = [
         ],
         'giix' => [
             'class' => 'carono\giix\GiixController',
+            'generator' => \app\templates\Generator::class,
             'templatePath' => '@app/templates/giix',
             'exceptTables' => [
                 '{{%auth_assignment}}',

@@ -21,7 +21,7 @@ class Model extends \carono\giix\templates\model\Model
             $created = isset($columns['created_at']) ? "'created_at'" : 'null';
             $updated = isset($columns['updated_at']) ? "'updated_at'" : 'null';
 
-            $column = isset($columns['created_at']) ? $columns['created_at'] : $columns['updated_at'];
+            $column = $columns['created_at'] ?? $columns['updated_at'];
 
 
             if ($column->type == 'integer') {
@@ -40,32 +40,6 @@ class Model extends \carono\giix\templates\model\Model
 PHP;
         }
 
-//        if (isset($columns['created_by']) || isset($columns['updated_by'])) {
-//            $creator = isset($columns['created_by']) ? "'created_by'" : 'null';
-//            $updater = isset($columns['updated_by']) ? "'updated_by'" : 'null';
-//            $behaviors[] = <<<PHP
-//    'author' => [
-//        'class' => '\yii\behaviors\BlameableBehavior',
-//        'createdByAttribute' => $creator,
-//        'updatedByAttribute' => $updater
-//    ]
-//PHP;
-//        }
-
-        if (isset($columns['deleted_at'])) {
-            $behaviors[] = <<<PHP
-    'softDeleteBehavior' => [
-        'class' => 'yii2tech\ar\softdelete\SoftDeleteBehavior',
-        'softDeleteAttributeValues' => [
-            'deleted_at' => new \yii\db\Expression('NOW()'),
-        ],
-        'restoreAttributeValues'=> ['deleted_at' => null],
-        'replaceRegularDelete' => true
-    ]
-PHP;
-        }
-
-
         if ($behaviors) {
             $behaviorsString = implode(",\n", $behaviors);
             $php = <<<PHP
@@ -74,9 +48,9 @@ $behaviorsString
 ];
 PHP;
             $method->addBody($php);
-        } else {
-            return false;
+            return true;
         }
+        return false;
     }
 
     /**

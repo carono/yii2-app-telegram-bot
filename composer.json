@@ -25,7 +25,8 @@
     "carono/yii2-migrate": "@stable",
     "carono/yii2-giix": "@stable",
     "yiisoft/yii2-symfonymailer": "^3.0",
-    "carono/telegram-bot-components": "@dev"
+    "carono/telegram-bot-components": "@dev",
+    "symfony/cache": "@stable"
   },
   "require-dev": {
     "yiisoft/yii2-debug": "~2.1.0",
